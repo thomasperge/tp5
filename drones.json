@@ -1,0 +1,66 @@
+[
+  {
+    "drone_id": "drone-001",
+    "model": "DJI Mavic Air 2",
+    "manufacturer": "DJI",
+    "battery_capacity_mAh": 3500,
+    "deployment_zone": "Nord-Paris",
+    "active": true
+  },
+  {
+    "drone_id": "drone-002",
+    "model": "Parrot Anafi",
+    "manufacturer": "Parrot",
+    "battery_capacity_mAh": 2700,
+    "deployment_zone": "Sud-Paris",
+    "active": true
+  },
+  {
+    "drone_id": "drone-003",
+    "model": "Skydio 2+",
+    "manufacturer": "Skydio",
+    "battery_capacity_mAh": 4280,
+    "deployment_zone": "Ouest-Paris",
+    "active": false
+  },
+  {
+    "drone_id": "drone-004",
+    "model": "Autel EVO Lite+",
+    "manufacturer": "Autel Robotics",
+    "battery_capacity_mAh": 6175,
+    "deployment_zone": "Est-Paris",
+    "active": true
+  },
+  {
+    "drone_id": "drone-005",
+    "model": "DJI Phantom 4 Pro V2.0",
+    "manufacturer": "DJI",
+    "battery_capacity_mAh": 5870,
+    "deployment_zone": "La Défense",
+    "active": true
+  },
+  {
+    "drone_id": "drone-006",
+    "model": "Yuneec Typhoon H Plus",
+    "manufacturer": "Yuneec",
+    "battery_capacity_mAh": 5250,
+    "deployment_zone": "Bois de Vincennes",
+    "active": false
+  },
+  {
+    "drone_id": "drone-007",
+    "model": "DJI Air 3",
+    "manufacturer": "DJI",
+    "battery_capacity_mAh": 4241,
+    "deployment_zone": "Montmartre",
+    "active": true
+  },
+  {
+    "drone_id": "drone-008",
+    "model": "Autel EVO Nano+",
+    "manufacturer": "Autel Robotics",
+    "battery_capacity_mAh": 2250,
+    "deployment_zone": "Parc de Sceaux",
+    "active": true
+  }
+]
