@@ -21,6 +21,10 @@ sensor_col = db[SENSOR_DATA_COLLECTION_NAME]
 # autour du Parc Montsouris (coordonnées : 48.8210, 2.3388).
 
 def q5_count_near_montsouris():
+    # Pipeline d'agrégation :
+    # 1. $geoNear : Chercher les mesures dont la localisation est dans un rayon de 3 km autour du Parc Montsouris
+    #    (centre : 48.8210, 2.3388, champ géospatial : location)
+    # 2. $count : Compter le nombre de mesures trouvées
     db[SENSOR_DATA_COLLECTION_NAME].create_index([("location", "2dsphere")])
     center = {"type": "Point", "coordinates": [2.3388, 48.8210]}
     pipeline = [

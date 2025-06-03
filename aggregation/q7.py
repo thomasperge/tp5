@@ -21,6 +21,14 @@ db = client[DATABASE_NAME]
 
 
 def q7_create_active_drones_last_data_view():
+    # Pipeline d'agrégation :
+    # 1. $match : Ne garder que les drones actifs (active: True)
+    # 2. $lookup : Pour chaque drone, récupérer sa dernière mesure depuis la collection timeseries (sensor_data)
+    #    - $match interne : Ne garder que les mesures du drone courant
+    #    - $sort interne : Trier par timestamp décroissant
+    #    - $limit interne : Garder la mesure la plus récente
+    # 3. $unwind : Déplier le tableau last_data pour avoir un seul document par drone
+    # 4. $project : Afficher toutes les infos du drone et la dernière mesure dans le champ last_data
     pipeline = [
         {"$match": {"active": True}},
         {"$lookup": {

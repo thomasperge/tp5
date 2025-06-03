@@ -21,6 +21,9 @@ sensor_col = db[SENSOR_DATA_COLLECTION_NAME]
 # chaque drone.
 
 def q2_last_measure_per_drone():
+    # Pipeline d'agrégation :
+    # 1. $sort : Trier toutes les mesures par timestamp décroissant (plus récentes d'abord)
+    # 2. $group : Pour chaque drone (drone_id), garder la première mesure (la plus récente)
     pipeline = [
         {"$sort": {"timestamp": -1}},
         {"$group": {

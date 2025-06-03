@@ -21,6 +21,11 @@ sensor_col = db[SENSOR_DATA_COLLECTION_NAME]
 #Q6 : Calculez la moyenne de PM2.5 par drone actif uniquement.
 
 def q6_avg_pm25_active_drones():
+    # Pipeline d'agrégation :
+    # 1. $lookup : Récupérer les infos du drone (dont le statut actif) depuis la collection des drones
+    # 2. $unwind : Déplier le tableau drone_info pour avoir un seul document par mesure
+    # 3. $match : Ne garder que les mesures des drones actifs
+    # 4. $group : Grouper par drone et calculer la moyenne de PM2.5 pour chaque drone actif
     pipeline = [
         {"$lookup": {
             "from": DRONE_COLLECTION_NAME,

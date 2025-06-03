@@ -18,11 +18,17 @@ client = MongoClient(MONGO_URI)
 db = client[DATABASE_NAME]
 sensor_col = db[SENSOR_DATA_COLLECTION_NAME]
 
-# Q3 : Pour les 5 dernières mesure, affichez le modèle de drone qui l’a
+# Q3 : Pour les 5 dernières mesure, affichez le modèle de drone qui l'a
 # émise.
 
 
 def q3_last_5_measures_models():
+    # Pipeline d'agrégation :
+    # 1. $sort : Trier toutes les mesures par timestamp décroissant (plus récentes d'abord)
+    # 2. $limit : Garder seulement les 5 dernières mesures
+    # 3. $lookup : Récupérer les infos du drone (dont le modèle) depuis la collection des drones
+    # 4. $unwind : Déplier le tableau drone_info pour avoir un seul document par mesure
+    # 5. $project : Afficher uniquement le timestamp, le drone_id et le modèle du drone
     pipeline = [
         {"$sort": {"timestamp": -1}},
         {"$limit": 5},

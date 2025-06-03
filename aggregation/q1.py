@@ -22,6 +22,10 @@ sensor_col = db[SENSOR_DATA_COLLECTION_NAME]
 # par l'ensemble des drones durant les 12 derinères heures.
 
 def q1_temperature_hourly_last_12h():
+    # Pipeline d'agrégation :
+    # 1. $match : Ne garder que les mesures des 12 dernières heures (filtre sur le champ timestamp)
+    # 2. $group : Regrouper par heure et par date, et calculer la température moyenne pour chaque groupe
+    # 3. $sort : Trier les résultats par date puis par heure croissante
     since = datetime.now(UTC) - timedelta(hours=12)
     pipeline = [
         {"$match": {"timestamp": {"$gte": since}}},

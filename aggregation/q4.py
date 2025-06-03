@@ -22,6 +22,10 @@ sensor_col = db[SENSOR_DATA_COLLECTION_NAME]
 # drones
 
 def q4_count_by_manufacturer():
+    # Pipeline d'agrégation :
+    # 1. $lookup : Récupérer les infos du drone (dont le fabricant) depuis la collection des drones
+    # 2. $unwind : Déplier le tableau drone_info pour avoir un seul document par mesure
+    # 3. $group : Grouper par fabricant et compter le nombre de mesures pour chaque fabricant
     pipeline = [
         {"$lookup": {
             "from": DRONE_COLLECTION_NAME,
