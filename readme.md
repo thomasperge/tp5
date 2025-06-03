@@ -31,7 +31,7 @@ Des drones autonomes survolent plusieurs zones et envoient en temps réel des me
 2. **Créer et activer l'environnement virtuel sur windows**
    ```bash
    python3 -m venv venv
-   .venv\Scripts\Activate.ps1
+   ./venv/Scripts/Activate.ps1
    ```
 
 3. **Installer les dépendances**
