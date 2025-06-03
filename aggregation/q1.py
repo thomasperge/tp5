@@ -18,6 +18,9 @@ client = MongoClient(MONGO_URI)
 db = client[DATABASE_NAME]
 sensor_col = db[SENSOR_DATA_COLLECTION_NAME]
 
+# Q1 :Affichez l'évolution horaire de la température moyenne enregistrée
+# par l'ensemble des drones durant les 12 derinères heures.
+
 def q1_temperature_hourly_last_12h():
     since = datetime.now(UTC) - timedelta(hours=12)
     pipeline = [

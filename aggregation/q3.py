@@ -18,6 +18,10 @@ client = MongoClient(MONGO_URI)
 db = client[DATABASE_NAME]
 sensor_col = db[SENSOR_DATA_COLLECTION_NAME]
 
+# Q3 : Pour les 5 dernières mesure, affichez le modèle de drone qui l’a
+# émise.
+
+
 def q3_last_5_measures_models():
     pipeline = [
         {"$sort": {"timestamp": -1}},

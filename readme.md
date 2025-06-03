@@ -45,7 +45,7 @@ Des drones autonomes survolent plusieurs zones et envoient en temps réel des me
 
 1. **Créer la base et la collection avec schéma de validation, puis insérer les drones**
    ```bash
-   python create_dv.py
+   python create_db.py
    ```
    - Crée la base `madb_kauffmant_moeung`.
    - Crée la collection `drones` avec schéma de validation.

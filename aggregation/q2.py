@@ -17,6 +17,9 @@ client = MongoClient(MONGO_URI)
 db = client[DATABASE_NAME]
 sensor_col = db[SENSOR_DATA_COLLECTION_NAME]
 
+# Q2 : Affichez la dernière mesure enregistrée (la plus récente) pour
+# chaque drone.
+
 def q2_last_measure_per_drone():
     pipeline = [
         {"$sort": {"timestamp": -1}},

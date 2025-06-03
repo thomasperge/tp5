@@ -17,6 +17,9 @@ client = MongoClient(MONGO_URI)
 db = client[DATABASE_NAME]
 sensor_col = db[SENSOR_DATA_COLLECTION_NAME]
 
+# Q5 : Comptez le nombre de mesures effectuées dans un rayon de 3 km
+# autour du Parc Montsouris (coordonnées : 48.8210, 2.3388).
+
 def q5_count_near_montsouris():
     db[SENSOR_DATA_COLLECTION_NAME].create_index([("location", "2dsphere")])
     center = {"type": "Point", "coordinates": [2.3388, 48.8210]}

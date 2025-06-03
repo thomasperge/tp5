@@ -18,6 +18,9 @@ client = MongoClient(MONGO_URI)
 db = client[DATABASE_NAME]
 sensor_col = db[SENSOR_DATA_COLLECTION_NAME]
 
+# Q4 : Calculez le nombre total de mesures regroupées par fabricant de
+# drones
+
 def q4_count_by_manufacturer():
     pipeline = [
         {"$lookup": {

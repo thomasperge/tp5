@@ -18,6 +18,8 @@ client = MongoClient(MONGO_URI)
 db = client[DATABASE_NAME]
 sensor_col = db[SENSOR_DATA_COLLECTION_NAME]
 
+#Q6 : Calculez la moyenne de PM2.5 par drone actif uniquement.
+
 def q6_avg_pm25_active_drones():
     pipeline = [
         {"$lookup": {

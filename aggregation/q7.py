@@ -16,6 +16,10 @@ DRONE_COLLECTION_NAME = os.environ.get('APIARY_COLLECTION_NAME', None)
 client = MongoClient(MONGO_URI)
 db = client[DATABASE_NAME]
 
+# Q7 : Créez une vue contenant chaque drone et leur dernière donnée
+# générée par les drones actifs.
+
+
 def q7_create_active_drones_last_data_view():
     pipeline = [
         {"$match": {"active": True}},
