@@ -11,7 +11,7 @@ load_dotenv(dotenv_path)
 
 MONGO_URI = os.environ.get('MONGO_URI', None)
 DATABASE_NAME = os.environ.get('DATABASE_NAME', None)
-APIARY_COLLECTION_NAME = os.environ.get('APIARY_COLLECTION_NAME', None)
+DRONE_COLLECTION_NAME = os.environ.get('DRONE_COLLECTION_NAME', None)
 
 # Connexion à MongoDB
 client = MongoClient(MONGO_URI)
@@ -41,21 +41,21 @@ drone_schema = {
 }
 
 # Suppression de la collection si elle existe déjà (pour relancer le script sans erreur)
-if APIARY_COLLECTION_NAME in db.list_collection_names():
-    db[APIARY_COLLECTION_NAME].drop()
+if DRONE_COLLECTION_NAME in db.list_collection_names():
+    db[DRONE_COLLECTION_NAME].drop()
 
 # Création de la collection avec le schéma de validation
 db.create_collection(
-    APIARY_COLLECTION_NAME,
+    DRONE_COLLECTION_NAME,
     validator=drone_schema
 )
 
-print(f"Collection '{APIARY_COLLECTION_NAME}' créée avec schéma de validation dans la base '{DATABASE_NAME}'.")
+print(f"Collection '{DRONE_COLLECTION_NAME}' créée avec schéma de validation dans la base '{DATABASE_NAME}'.")
 
 # Insertion des données du fichier drones.json
 drones_file = 'drones.json'
 with open(drones_file, 'r', encoding='utf-8') as f:
     drones_data = json.load(f)
 
-result = db[APIARY_COLLECTION_NAME].insert_many(drones_data)
-print(f"{len(result.inserted_ids)} documents insérés dans la collection '{APIARY_COLLECTION_NAME}'.") 
+result = db[DRONE_COLLECTION_NAME].insert_many(drones_data)
+print(f"{len(result.inserted_ids)} documents insérés dans la collection '{DRONE_COLLECTION_NAME}'.") 

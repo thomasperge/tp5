@@ -11,7 +11,7 @@ load_dotenv(dotenv_path)
 MONGO_URI = os.environ.get('MONGO_URI', None)
 DATABASE_NAME = os.environ.get('DATABASE_NAME', None)
 SENSOR_DATA_COLLECTION_NAME = os.environ.get('SENSOR_DATA_COLLECTION_NAME', None)
-DRONE_COLLECTION_NAME = os.environ.get('APIARY_COLLECTION_NAME', None)
+DRONE_COLLECTION_NAME = os.environ.get('DRONE_COLLECTION_NAME', None)
 
 client = MongoClient(MONGO_URI)
 db = client[DATABASE_NAME]
